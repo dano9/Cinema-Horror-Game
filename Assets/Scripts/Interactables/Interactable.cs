@@ -9,13 +9,18 @@ public class Interactable : MonoBehaviour
     public string[] info;
     public bool readInfo;
     public UnityEvent[] interactActions;
-    public void Interact()
+    public bool prolongInteraction;
+    public virtual void Interact()
     {
         if (readInfo) { GameManager.gM.hM.iR.ReadInfo(info);}
         foreach (UnityEvent uE in interactActions)
         {
             uE.Invoke();
         }
+    }
+    public virtual void EndInteract()
+    {
+        
     }
     public void TestFunc()
     {

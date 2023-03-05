@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
     public Item[] items;
     public LayerMask lM;
     public CursorMode cursMode;
+    public Vector2 worldMousePos;
 
     public Texture2D grabTex;
 
     List<string> interStoppers;
     public Transform debugPointer;
+
+    public Interactable curInteractable;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,24 +45,42 @@ public class Player : MonoBehaviour
     }
     public void ManageMouse()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        debugPointer.position = mousePos;
+        worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        debugPointer.position = worldMousePos;
         int cursorDet = 0;
         if (interStoppers.Count == 0)
         {
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(mousePos, 0.05f, Vector3.forward, Mathf.Infinity, lM, -Mathf.Infinity, Mathf.Infinity);
+            if (curInteractable == null)
+            {
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(worldMousePos, 0.05f, Vector3.forward, Mathf.Infinity, lM, -Mathf.Infinity, Mathf.Infinity);
             foreach (RaycastHit2D hit in hits)
             {
                 print(hit.collider.name);
-                if (hit.collider.gameObject.GetComponent<Interactable>() != null)
+                Interactable inter = hit.collider.gameObject.GetComponent<Interactable>();
+                if (inter != null)
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        hit.collider.gameObject.GetComponent<Interactable>().Interact();
+                        inter.Interact();
+                        if (inter.prolongInteraction)
+                        {
+                            curInteractable = inter;
+                        }
                     }
                     cursorDet = hit.collider.gameObject.GetComponent<Interactable>().hoverIcon;
                 }
             }
+            }
+            else
+            {
+                cursorDet = 5;
+                if (!Input.GetMouseButton(0))
+                {
+                    curInteractable.EndInteract();
+                    curInteractable = null;
+                }
+            }
+
         }
         else {cursorDet = 4;}
         GameManager.gM.hM.curCursorMode = cursorDet;

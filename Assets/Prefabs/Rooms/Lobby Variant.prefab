@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: e0201c988ad250b48b3de5fd01608acf, type: 3}
     - target: {fileID: 1873571504100832170, guid: 4f5b23e6ba425cc4ab566712002083dc, type: 3}
       propertyPath: m_Name
-      value: Lobby
+      value: Lobby Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2232550394798215808, guid: 4f5b23e6ba425cc4ab566712002083dc, type: 3}
       propertyPath: m_LocalScale.x
@@ -167,3 +167,80 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4737573209846000148, guid: 4f5b23e6ba425cc4ab566712002083dc, type: 3}
   m_PrefabInstance: {fileID: 1569927590645616492}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4826878610103720122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6086260203593098616}
+    m_Modifications:
+    - target: {fileID: 713760312327448304, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_Size.x
+      value: 0.81383955
+      objectReference: {fileID: 0}
+    - target: {fileID: 713760312327448304, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_Size.y
+      value: 2.4615362
+      objectReference: {fileID: 0}
+    - target: {fileID: 713760312327448304, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.12561457
+      objectReference: {fileID: 0}
+    - target: {fileID: 713760312327448304, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.29194164
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.0192237
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393649126571955922, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6950548731539334060, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: m_Name
+      value: GoBathroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549372660241042456, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
+      propertyPath: interactActions.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: bathroom
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
