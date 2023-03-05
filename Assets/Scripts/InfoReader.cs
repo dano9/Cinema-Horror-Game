@@ -36,14 +36,21 @@ public class InfoReader : MonoBehaviour
         foreach (string info in infos)
         {
             string infoProg = "";
+            bool skip = false;
             yield return new WaitForSeconds(characterInterval);
-            for (int i = 0; i < info.Length; i++)
+            for (int i = 0; i < info.Length && !skip; i++)
             {
                 infoProg += info[i];
                 infoText.text = infoProg;
-                yield return new WaitForSeconds(characterInterval);
+                float t = Time.time;
+                while (Time.time < t + characterInterval && !skip)
+                {
+                    if (Input.GetMouseButtonDown(0)) {skip = true;}
+                    yield return null;
+                }
             }
-            while (!Input.GetKeyDown("space"))
+            infoText.text = info;
+            while (!Input.GetMouseButtonDown(0))
             {
                 yield return null;
             }
