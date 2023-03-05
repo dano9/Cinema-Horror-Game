@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public SaveManager sM;
     public HUDManager hM;
     public Player player;
+    public RoomManager rM;
     
 
     // Start is called before the first frame update

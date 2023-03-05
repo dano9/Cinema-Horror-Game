@@ -22,7 +22,7 @@ public class RoomManager : MonoBehaviour
         {
             rooms[roomNames[r]] = roomsArray[r];
         }
-        SwitchRoom("room1");
+        SwitchRoom(roomNames[0]);
     }
 
     // Update is called once per frame

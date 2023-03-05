@@ -9,6 +9,7 @@ public class InfoReader : MonoBehaviour
     public float characterInterval = 0.04f;
     public bool isReading;
     private Coroutine currentReadCoroutine;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,7 @@ public class InfoReader : MonoBehaviour
     }
     public IEnumerator ReadInfoIE(string[] infos)
     {
+        GameManager.gM.player.PauseMouseInter("inforeader");
         isReading = true;
         infoText.text = "";
         infoText.gameObject.SetActive(true);
@@ -57,5 +59,7 @@ public class InfoReader : MonoBehaviour
         }
         infoText.gameObject.SetActive(false);
         isReading = false;
+        GameManager.gM.player.ResumeMouseInter("inforeader");
     }
+    
 }

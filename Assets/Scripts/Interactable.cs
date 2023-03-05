@@ -24,4 +24,8 @@ public class Interactable : MonoBehaviour
     {
         GameManager.gM.player.AquireItem(i);
     }
+    public void SwitchRoom(string newRoom)
+    {
+        GameManager.gM.rM.SwitchRoom(newRoom, true);
+    }
 }

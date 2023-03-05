@@ -9,13 +9,13 @@ public class HUDManager : MonoBehaviour
     public RectTransform hotbar;
     public VignetteManager vM;
     bool showingHotbar;
-    public int curCursorMode = 0;
-    int lastCursorMode = 0;
+    public int curCursorMode = -1;
+    int lastCursorMode = -1;
     public Texture2D[] cursors;
     // Start is called before the first frame update
     void Start()
     {
-        
+        curCursorMode = -1;
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class HUDManager : MonoBehaviour
     {
         if (lastCursorMode != curCursorMode)
         {
-            Cursor.SetCursor(cursors[curCursorMode], Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(cursors[curCursorMode], Vector2.one * 30, CursorMode.Auto);
             lastCursorMode = curCursorMode;
         }
     }
