@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     public bool readInfo;
     public UnityEvent[] interactActions;
     public bool prolongInteraction;
+    public int specificItem = -1;
     public virtual void Interact()
     {
         if (readInfo) { GameManager.gM.hM.iR.ReadInfo(info);}
@@ -32,5 +33,10 @@ public class Interactable : MonoBehaviour
     public void SwitchRoom(string newRoom)
     {
         GameManager.gM.rM.SwitchRoom(newRoom, true);
+    }
+    public void SetPlayerGrabbed(int i)
+    {
+        print("WOOOOOOOH!!");
+        GameManager.gM.player.grabbedItem = i;
     }
 }

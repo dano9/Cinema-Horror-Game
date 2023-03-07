@@ -47,6 +47,9 @@ public class InteractabilityUI : MonoBehaviour
             {
                 itemSlots.Add(Instantiate(itemSlotPrefab,itemSlotHolder).GetComponent<Image>());
                 itemSlots[i].sprite = items[i].icon;
+                int index = items[i].index;
+                int id = i;
+                itemSlots[i].GetComponent<Interactable>().interactActions[0].AddListener(delegate { itemSlots[id].GetComponent<Interactable>().SetPlayerGrabbed(index);});
             }
             int columns = Mathf.Clamp(items.Count, 1, itemsPerRow);
             itemSlots[i].transform.localPosition = new Vector2(((i % itemsPerRow) - ((columns - 1f) * 0.5f)) * spacing, (Mathf.Floor(i / itemsPerRow) - ((rows - 1) * 0.5f)) * spacing);

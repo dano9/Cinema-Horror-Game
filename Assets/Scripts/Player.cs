@@ -8,6 +8,8 @@ public class Item
     public string name;
     public bool equipped;
     public Sprite icon;
+    public bool reusable;
+    public int index;
 }
 public class Player : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class Player : MonoBehaviour
     public Transform debugPointer;
 
     public Interactable curInteractable;
+    public int grabbedItem;
+    public SpriteRenderer grabbedItemSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,28 +52,55 @@ public class Player : MonoBehaviour
         worldMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         debugPointer.position = worldMousePos;
         int cursorDet = 0;
+        if (grabbedItem == -1) {grabbedItemSprite.sprite = null;} else {grabbedItemSprite.sprite = items[grabbedItem].icon;  cursorDet = 5;}
         if (interStoppers.Count == 0)
         {
             if (curInteractable == null)
             {
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(worldMousePos, 0.05f, Vector3.forward, Mathf.Infinity, lM, -Mathf.Infinity, Mathf.Infinity);
-            foreach (RaycastHit2D hit in hits)
-            {
-                print(hit.collider.name);
-                Interactable inter = hit.collider.gameObject.GetComponent<Interactable>();
-                if (inter != null)
+                Interactable selectedInter = null;
+                RaycastHit2D[] hits = Physics2D.CircleCastAll(worldMousePos, 0.05f, Vector3.forward, Mathf.Infinity, lM, -Mathf.Infinity, Mathf.Infinity);
+                foreach (RaycastHit2D hit in hits)
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    if (selectedInter == null || (selectedInter.transform.position.z < hit.collider.transform.position.z))
                     {
-                        inter.Interact();
-                        if (inter.prolongInteraction)
+                        Interactable newInter = hit.collider.gameObject.GetComponent<Interactable>();
+                        if (newInter.specificItem == -1 || grabbedItem != -1)
+                        {selectedInter = newInter;}
+                    }
+                }
+
+                if (selectedInter != null)
+                {
+                    if (grabbedItem == -1)
+                    {
+                        if (Input.GetMouseButtonDown(0) && selectedInter.specificItem == -1)
                         {
-                            curInteractable = inter;
+                            selectedInter.Interact();
+                            if (selectedInter.prolongInteraction)
+                            {
+                                curInteractable = selectedInter;
+                            }
+                        }
+                        cursorDet = selectedInter.hoverIcon;
+                    }
+                    else
+                    {
+                        cursorDet = 2;
+                        if (Input.GetMouseButtonUp(0))
+                        {
+                            if (selectedInter.specificItem == grabbedItem)
+                            {
+                                selectedInter.Interact();
+                                if (!items[grabbedItem].reusable)
+                                {
+                                    items[grabbedItem].equipped = false;
+                                    grabbedItem = -1;
+                                }
+                            }
+                            else {GameManager.gM.hM.iR.ReadInfo(new string[] {"I can't use that here..."});}
                         }
                     }
-                    cursorDet = hit.collider.gameObject.GetComponent<Interactable>().hoverIcon;
                 }
-            }
             }
             else
             {
@@ -83,6 +114,10 @@ public class Player : MonoBehaviour
 
         }
         else {cursorDet = 4;}
+        if (!Input.GetMouseButton(0))
+        {
+            grabbedItem = -1;
+        }
         GameManager.gM.hM.curCursorMode = cursorDet;
     }
 
