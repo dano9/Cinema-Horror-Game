@@ -311,12 +311,14 @@ MonoBehaviour:
   - {fileID: 957577086104076420, guid: 3ad38a86750c5424eab8877cd77e8514, type: 3}
   - {fileID: 275668882035998656, guid: e102f2f0a305ba749b13334caa10715c, type: 3}
   - {fileID: 5453402522185575755, guid: d8f4675293e52694db77b1e35c4f7d20, type: 3}
+  - {fileID: 648478121010467451, guid: a2d0b886e82291043bf5b7f20bd407fc, type: 3}
   roomNames:
   - cinemaFront
   - cinemaBack
   - lobby
   - bathroom
   - mainCorridor
+  - behindBar
   currentRoom: 0
   instantiatedRoom: {fileID: 0}
   roomHolder: {fileID: 2051027058}
@@ -564,7 +566,7 @@ MonoBehaviour:
     reusable: 0
     index: 0
   - name: SocketWrench
-    equipped: 1
+    equipped: 0
     icon: {fileID: 21300000, guid: 82c26bb7368089343957eec8528e46fa, type: 3}
     reusable: 0
     index: 1
