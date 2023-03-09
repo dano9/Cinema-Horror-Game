@@ -478,8 +478,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2258582375988929889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.97, y: -4.1, z: -1}
-  m_LocalScale: {x: 0.21006542, y: 0.21006542, z: 0.21006542}
+  m_LocalPosition: {x: -0.85, y: -4.13, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1550238788675096886}
@@ -550,9 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverIcon: 2
-  info:
-  - Wooooh
-  - This is great
+  info: []
   readInfo: 0
   interactActions:
   - m_PersistentCalls:
@@ -600,7 +598,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.15, y: 4.39}
+    oldSize: {x: 1.23, y: 0.878}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2226,7 +2224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8549372660241042456, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
       propertyPath: interactActions.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: lobby
+      value: mainCorridor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44d50b1eb6d7cb34ab7d25d4f0ed5527, type: 3}
