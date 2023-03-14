@@ -192,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2141232319360418485, guid: 743c04f92915b814689053cf1a375ee3, type: 3}
       propertyPath: m_Name
-      value: ItemInteractable
+      value: SocketWrenchPickup
       objectReference: {fileID: 0}
     - target: {fileID: 4049399542168499439, guid: 743c04f92915b814689053cf1a375ee3, type: 3}
       propertyPath: m_RootOrder
@@ -253,6 +253,10 @@ PrefabInstance:
     - target: {fileID: 4903044724276004172, guid: 743c04f92915b814689053cf1a375ee3, type: 3}
       propertyPath: interactActions.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440328421043116035, guid: 743c04f92915b814689053cf1a375ee3, type: 3}
+      propertyPath: property
+      value: Socket Wrench
       objectReference: {fileID: 0}
     - target: {fileID: 8390017921511512919, guid: 743c04f92915b814689053cf1a375ee3, type: 3}
       propertyPath: m_Sprite

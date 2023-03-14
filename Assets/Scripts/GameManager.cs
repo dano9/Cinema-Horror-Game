@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
     public HUDManager hM;
     public Player player;
     public RoomManager rM;
+    public SaveManager svM;
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gM = this.GetComponent<GameManager>();
     }

@@ -14,7 +14,7 @@ public class Item
 public class Player : MonoBehaviour
 {
     public Item[] items;
-    public LayerMask lM;
+    public LayerMask lM; 
     public CursorMode cursMode;
     public Vector2 worldMousePos;
 
@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public void AquireItem(int i)
     {
         items[i].equipped = true;
+        GameManager.gM.svM.curSaveData[items[i].name] = 1;
         GameManager.gM.hM.iR.ReadInfo(new string[]{"Aquired " + items[i].name});
         StartCoroutine(GameManager.gM.hM.ShowHotbar());
     }
@@ -61,7 +62,7 @@ public class Player : MonoBehaviour
                 RaycastHit2D[] hits = Physics2D.CircleCastAll(worldMousePos, 0.05f, Vector3.forward, Mathf.Infinity, lM, -Mathf.Infinity, Mathf.Infinity);
                 foreach (RaycastHit2D hit in hits)
                 {
-                    if (selectedInter == null || (selectedInter.transform.position.z < hit.collider.transform.position.z))
+                    if (hit.collider.gameObject.GetComponent<Interactable>() != null && (selectedInter == null || (selectedInter.transform.position.z < hit.collider.transform.position.z)))
                     {
                         Interactable newInter = hit.collider.gameObject.GetComponent<Interactable>();
                         if (newInter.specificItem == -1 || grabbedItem != -1)
