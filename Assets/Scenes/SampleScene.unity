@@ -312,6 +312,7 @@ MonoBehaviour:
   - {fileID: 275668882035998656, guid: e102f2f0a305ba749b13334caa10715c, type: 3}
   - {fileID: 5453402522185575755, guid: d8f4675293e52694db77b1e35c4f7d20, type: 3}
   - {fileID: 648478121010467451, guid: a2d0b886e82291043bf5b7f20bd407fc, type: 3}
+  - {fileID: 1036711603678095524, guid: 2476fdf966939634fab3a1042fdacb09, type: 3}
   roomNames:
   - cinemaFront
   - cinemaBack
@@ -319,6 +320,7 @@ MonoBehaviour:
   - bathroom
   - mainCorridor
   - behindBar
+  - mazeCorridor
   currentRoom: 0
   instantiatedRoom: {fileID: 0}
   roomHolder: {fileID: 2051027058}
@@ -565,7 +567,7 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 854a807b74e3a3244adeb5a5cb8aa457, type: 3}
     reusable: 0
     index: 0
-  - name: SocketWrench
+  - name: Socket Wrench
     equipped: 0
     icon: {fileID: 21300000, guid: 82c26bb7368089343957eec8528e46fa, type: 3}
     reusable: 0
@@ -639,6 +641,58 @@ MonoBehaviour:
   isFading: 0
   vignette: {fileID: 2039169867}
   blackScreen: {fileID: 1192695002}
+--- !u!1 &780540009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 780540011}
+  - component: {fileID: 780540010}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &780540010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780540009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f06dec6ab40e04e923506dc8acd52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataLabels:
+  - hasPlayed
+  - cinemaStage
+  - projectorTurn
+  defaultDataSet:
+  - 0
+  - 0
+  - 0
+--- !u!4 &780540011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780540009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.23000002, y: -0.029999971, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &829441406
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +990,7 @@ MonoBehaviour:
   hM: {fileID: 354389385}
   player: {fileID: 743574379}
   rM: {fileID: 218905736}
+  svM: {fileID: 780540010}
 --- !u!4 &1702654842
 Transform:
   m_ObjectHideFlags: 0
@@ -999,7 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

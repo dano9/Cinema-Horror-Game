@@ -36,7 +36,6 @@ public class Interactable : MonoBehaviour
     }
     public void SetPlayerGrabbed(int i)
     {
-        print("WOOOOOOOH!!");
         GameManager.gM.player.grabbedItem = i;
     }
 }

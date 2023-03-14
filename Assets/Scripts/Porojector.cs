@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct Movie
 {
     public Sprite[] movieFrames;
@@ -13,7 +14,9 @@ public class Porojector : MonoBehaviour
     public Transform leverHandle;
     public float wheelTurnMultiplier;
     public SpriteRenderer projection;
-    public Sprite[] movieFrames;
+    public Movie[] movies;
+    public string[] movieLabels;
+    public static Dictionary<string, int> movieDict;
     public float valueToFrameIndexMulti = 10;
     public int frameIndex;
     public string curMovie;
@@ -21,10 +24,23 @@ public class Porojector : MonoBehaviour
     public GameObject wrench;
     public GameObject noWrenchInter;
     public bool hasWrench;
+
     // Start is called before the first frame update
     void Start()
     {
-        wheelInter.value = 200 * movieFrames.Length;
+        wheelInter.value = 200 * 20;
+        wheelInter.value = GameManager.gM.svM.curSaveData["projectorTurn"];
+        if (movieDict == null) {
+            movieDict = new Dictionary<string, int>();
+            for (int m = 0; m < movies.Length; m++)
+            {
+                movieDict.Add(movieLabels[m], m);
+            }
+        }
+    }
+    void OnDestroy()
+    {
+        GameManager.gM.svM.curSaveData["projectorTurn"] = wheelInter.value;
     }
 
     // Update is called once per frame
@@ -40,17 +56,21 @@ public class Porojector : MonoBehaviour
         }
         if (!hasWrench)
         {
-            if (wrench.active) {wrench.SetActive(false); noWrenchInter.SetActive(true);}
+            if (wrench.active || !noWrenchInter.active) {wrench.SetActive(false); noWrenchInter.SetActive(true);}
         }
         else 
         {
-            if (!wrench.active) {wrench.SetActive(true); noWrenchInter.SetActive(false);}
+            if (!wrench.active || noWrenchInter.active) {wrench.SetActive(true); noWrenchInter.SetActive(false);}
             if (!wheelInter.isGrabbed)
             {
                 wheelInter.value += autoTurnSpeed * Time.deltaTime;
             }
-            frameIndex = Mathf.Clamp((int)Mathf.Floor((valueToFrameIndexMulti * wheelInter.value))  % movieFrames.Length, 0, movieFrames.Length);
-            projection.sprite = movieFrames[frameIndex];
+            if (curMovie != "")
+            {
+                int movieFrameLength = movies[movieDict[curMovie]].movieFrames.Length;
+                frameIndex = Mathf.Clamp((int)Mathf.Floor((valueToFrameIndexMulti * wheelInter.value))  % movieFrameLength, 0, movieFrameLength);
+                projection.sprite = movies[movieDict[curMovie]].movieFrames[frameIndex];
+            }
         }
         foreach (Transform wheel in wheels)
         {
@@ -65,5 +85,12 @@ public class Porojector : MonoBehaviour
     public void PlaceWrench()
     {
         hasWrench = true;
+
+    }
+    public void SetMovie(string newMovie)
+    {
+        curMovie = newMovie;
+        wheelInter.value = 200;
+        GameManager.gM.svM.curSaveData["projectorTurn"] = wheelInter.value;
     }
 }
