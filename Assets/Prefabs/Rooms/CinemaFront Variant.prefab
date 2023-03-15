@@ -103,6 +103,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: fdea4cb8c89b0db4d81099e8c3ff96d4, type: 3}
+    - target: {fileID: 1765551353965170664, guid: 4f5b23e6ba425cc4ab566712002083dc, type: 3}
+      propertyPath: roomName
+      value: cinemaFront
+      objectReference: {fileID: 0}
     - target: {fileID: 1873571504100832170, guid: 4f5b23e6ba425cc4ab566712002083dc, type: 3}
       propertyPath: m_Name
       value: CinemaFront Variant

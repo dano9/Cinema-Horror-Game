@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
+    public int roomIndex;
+    public string roomName;
     // Start is called before the first frame update
     void Start()
     {

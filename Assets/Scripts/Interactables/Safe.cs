@@ -15,12 +15,23 @@ public class Safe : MonoBehaviour
     public AudioClip failSound;
     int soundIndex = 0;
 
+    public void Start()
+    {
+        print("Safe stage:" + GameManager.gM.svM.curSaveData["safeStage"]);
+        if (GameManager.gM.svM.curSaveData["safeStage"] == 1)
+        {
+            isOpened = true;
+            insides.SetActive(true);
+            keyPad.SetActive(false);
+        }
+    }
     public void enterKey(string key)
     {
         curInput += key;
         if (curInput == passcode)
         {
             isOpened = true;
+            GameManager.gM.svM.curSaveData["safeStage"] = 1;
             insides.SetActive(true);
             keyPad.SetActive(false);
             aS.clip = successSound;
