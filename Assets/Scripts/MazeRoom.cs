@@ -16,6 +16,7 @@ public class MazeRoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GameManager.gM.svM.curSaveData["safeStage"] == 1) {followMapLayout = true;} else {followMapLayout = false;}
         SetLayout();
     }
     public void SetLayout()
