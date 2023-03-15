@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b618c3125d0a3e246960dcf564be7927
+guid: 06d327d360bc4d94fad97580fbaecff2
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -10,8 +10,7 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Daniel
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: c03d05bd62802704ba2e8fc2ad882195, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
