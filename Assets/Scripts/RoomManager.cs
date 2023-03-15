@@ -20,9 +20,9 @@ public class RoomManager : MonoBehaviour
         rooms = new Dictionary<string, Room>();
         for (int r = 0; r < roomsArray.Length; r++)
         {
-            rooms[roomNames[r]] = roomsArray[r];
+            rooms[roomsArray[r].roomName] = roomsArray[r];
         }
-        SwitchRoom(roomNames[0]);
+       SwitchRoom(roomsArray[(int)GameManager.gM.svM.curSaveData["curRoom"]].roomName);
     }
 
     // Update is called once per frame
@@ -41,6 +41,7 @@ public class RoomManager : MonoBehaviour
         {
             if (instantiatedRoom != null) {Destroy(instantiatedRoom.gameObject);}
             instantiatedRoom = Instantiate(rooms[targRoom].gameObject, Vector2.zero, Quaternion.identity, roomHolder).GetComponent<Room>();
+            GameManager.gM.svM.curSaveData["curRoom"] = rooms[targRoom].roomIndex;
         }
         else
         {

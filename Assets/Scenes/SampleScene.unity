@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &35307464
 Transform:
   m_ObjectHideFlags: 0
@@ -432,14 +432,7 @@ MonoBehaviour:
   - {fileID: 5453402522185575755, guid: d8f4675293e52694db77b1e35c4f7d20, type: 3}
   - {fileID: 648478121010467451, guid: a2d0b886e82291043bf5b7f20bd407fc, type: 3}
   - {fileID: 1036711603678095524, guid: 2476fdf966939634fab3a1042fdacb09, type: 3}
-  roomNames:
-  - cinemaFront
-  - cinemaBack
-  - lobby
-  - bathroom
-  - mainCorridor
-  - behindBar
-  - mazeCorridor
+  roomNames: []
   currentRoom: 0
   instantiatedRoom: {fileID: 0}
   roomHolder: {fileID: 2051027058}
@@ -1064,7 +1057,9 @@ MonoBehaviour:
   - cinemaStage
   - projectorTurn
   - safeStage
+  - curRoom
   defaultDataSet:
+  - 0
   - 0
   - 0
   - 0

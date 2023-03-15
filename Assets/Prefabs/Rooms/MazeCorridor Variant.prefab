@@ -645,6 +645,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 036ac38e0802b6248af7cefbc6a804cf, type: 3}
+    - target: {fileID: 1765551353965170664, guid: 4f5b23e6ba425cc4ab566712002083dc, type: 3}
+      propertyPath: roomName
+      value: mazeCorridor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765551353965170664, guid: 4f5b23e6ba425cc4ab566712002083dc, type: 3}
+      propertyPath: roomIndex
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1873571504100832170, guid: 4f5b23e6ba425cc4ab566712002083dc, type: 3}
       propertyPath: m_Name
       value: MazeCorridor Variant
