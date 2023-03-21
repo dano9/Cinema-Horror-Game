@@ -19,11 +19,15 @@ public class Porojector : MonoBehaviour
     public static Dictionary<string, int> movieDict;
     public float valueToFrameIndexMulti = 10;
     public int frameIndex;
+    int lastFI;
+    int delFrameI;
     public string curMovie;
     public float autoTurnSpeed;
     public GameObject wrench;
     public GameObject noWrenchInter;
     public bool hasWrench;
+    public Animator projAnim;
+    public bool animBool1;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,7 @@ public class Porojector : MonoBehaviour
                 movieDict.Add(movieLabels[m], m);
             }
         }
+        lastFI = frameIndex;
     }
     void OnDestroy()
     {
@@ -69,14 +74,24 @@ public class Porojector : MonoBehaviour
             {
                 int movieFrameLength = movies[movieDict[curMovie]].movieFrames.Length;
                 frameIndex = Mathf.Clamp((int)Mathf.Floor((valueToFrameIndexMulti * wheelInter.value))  % movieFrameLength, 0, movieFrameLength);
-                projection.sprite = movies[movieDict[curMovie]].movieFrames[frameIndex];
+                projection.sprite = movies[movieDict[curMovie]].movieFrames[delFrameI];
             }
         }
         foreach (Transform wheel in wheels)
         {
             wheel.localRotation = Quaternion.Euler(0,0, wheelInter.value * wheelTurnMultiplier);
         }
-        
+        if (frameIndex != lastFI)
+        {
+            print("Switched Frame");
+            if (frameIndex > lastFI) {projAnim.SetTrigger("SwitchFrame");}
+            else {projAnim.SetTrigger("SwitchFrameBack");}
+            lastFI = frameIndex;
+        }
+        if (delFrameI != frameIndex)
+        {
+            if (animBool1) { delFrameI = frameIndex; }
+        }
     }
     void LateUpdate()
     {
